@@ -8,6 +8,9 @@ previousDate=$(date --date="120 days ago" +"%Y-%m-%d")
 echo "$(tput setaf 7)Executing command: git fetch origin"
 git fetch origin
 
+jiraTicket=$(echo "$BRANCH" |cut -d/ -f 1)
+jiraTicket=${jiraTicket:5}
+
 branchType=${BRANCH:0:4}
 if [[ "$branchType" == "hfbg" ]]; then
   echo "Identifying PR number for the current branch"
